@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <!-- СОДЕРЖИМОЕ ФОРМ ВРЕМЕННОЕ -->
+    <form method="post" id="regForm">
+        {% csrf_token %}
+        
+        <input type="text" placeholder="Имя пользователя" required>
+        <input type="password" placeholder="Пароль" required>
+        
+        <button>Зарегистрироваться</button>
+    </form>
+    <form method="post" id="logForm">
+        {% csrf_token %}
+        
+        <input type="text" placeholder="Имя пользователя" required>
+        <input type="password" placeholder="Пароль" required>
+        
+        <button>Войти</button>
+    </form>
+{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'user_app/css/auth.css' %}">
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'user_app/js/auth.js' %}"></script>
+{% endblock %}

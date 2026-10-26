@@ -2,14 +2,23 @@
 {% load static %}
 
 {% block content %}
-    {% include "user_app/forms/regform.html" %}
-    {% include "user_app/forms/logform.html" %}
+    <div id="authBox">
+        <div id = 'regLogDiv'>
+            <h1 id="regTitle" class="selected">Реєстрація</h1>
+            <h1 id="logTitle">Авторизація</h1>
+        </div>
+        <h3 id = 'welcomeText'>Приєднуйся до World IT</h3>
+        {% include "user_app/forms/regform.html" %}
+        {% include "user_app/forms/logform.html" %}
+    </div>
+    <img src="{% static 'user_app/img/laptop.png' %}" alt="Computer" id = 'computer'>
+    <img src="{% static 'user_app/img/iphone.png' %}" alt="IPhone">
 {% endblock %}
 
 {% block links %}
-    <link rel="stylesheet" href="{% static 'user_app/css/auth.css' %}">
+    <link rel="stylesheet" href="{% static 'user_app/css/authentification.css' %}">
 {% endblock %}
 
 {% block scripts %}
-    <script src="{% static 'user_app/js/auth.js' %}"></script>
+    <script src="{% static 'user_app/js/authentification.js' %}"></script>
 {% endblock %}

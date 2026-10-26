@@ -2,8 +2,10 @@
 <form method="post" id="regForm">
     {% csrf_token %}
     
-    <input type="text" placeholder="Имя пользователя" required>
-    <input type="password" placeholder="Пароль" required>
     
-    <button>Зарегистрироваться</button>
+    <input type="email" placeholder="you@example.com" name = "mailInput"required>
+    <input type="password" placeholder="Введи пароль" name = "passwordInput" required>
+    <input type="password" placeholder="Повтори пароль"  name = "confirmPasswordInput"required>
+    
+    <button name = "regButton" class="continue-button"><p class="continue-text">Створити акаунт</p></button>
 </form>

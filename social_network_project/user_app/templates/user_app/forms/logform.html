@@ -1,9 +1,9 @@
 <!-- СОДЕРЖИМОЕ ФОРМ ВРЕМЕННОЕ -->
-<form method="post" id="logForm">
+<form method="post" id="logForm" hidden>
     {% csrf_token %}
     
-    <input type="text" placeholder="Имя пользователя" required>
-    <input type="password" placeholder="Пароль" required>
+    <input type="email" placeholder="you@example.com" name = "mailInput" required>
+    <input type="password" placeholder="Введи пароль" name = "passwordInput" required>
     
-    <button>Войти</button>
+    <button name = "logButton" class="continue-button"><p class="continue-text">Увійти</p></button>
 </form>

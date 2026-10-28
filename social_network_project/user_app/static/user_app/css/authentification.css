@@ -1,14 +1,46 @@
+@font-face {
+    font-family: "GT Walsheim Regular";
+    src: url("../font/GT-Walsheim-Regular-Trial.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "GT Walsheim Medium";
+    src: url("../font/GT-Walsheim-Medium-Trial.woff2") format("woff2");
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "GT Walsheim Bold";
+    src: url("../font/GT-Walsheim-Bold-Trial.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+}
+
 body {
     background-color: #E9E5EE;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 0px;
 }
 
-.selected {
-    color: #070A1C;
-    text-decoration: underline;
+#regLogDiv h1 {
+    display: flex;
+    
+    gap: 8px;
+    font-size: 34px;
+    font-family: 'GT Walsheim Bold';
+    color: #81818D;
+    
+    user-select: none;
+}
+
+#regLogDiv h1:hover {
+    cursor: pointer;
 }
 
 #authBox {
@@ -16,58 +48,66 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 487px;
-    height: 552px;
+
     background-color: white;
+    
+    /* width: 487px;
+    height: 552px; */
     gap: 36px;
     padding: 44px;
-    z-index:2;
+    border-radius: 20px;
+    
+    z-index: 2;
 }
 
 .continue-button{
     display: flex;
-    color: #543C52;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
     width: 399px;
     height: 52px;
+    background-color: #543C52;
+    border-radius: 100px;
+    border: 0px;
+    margin-top: 19px;
+    gap: 8px;
+    padding-left: 24px;
+    padding-right: 24px;
 }
 .continue-text{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 125px;
-    height: 20px;
+    
     font-size: 16px;
+    color: #FFFFFF;
+
+    font-family: 'GT Walsheim Regular';
 }
 
-.welcome-text{
+#welcomeText {
     display: flex;
     flex-direction: column;
     justify-content: center;
     font-size: 24px;
+    font-family: 'GT Walsheim Regular';
 }
 
-#input-text{
-
-}
-/*  .input-text текст в інпуті */
 #argument-text{
-    
+    color: #070A1C;
+    font-size: 16px;
+    font-weight: 400;
 }
 /* argument-text текст з інформацією для вказання*/
 
-#computer{
-    width: 570px;
-    height: 519px;
-    position: absolute;
-}
-
-#iphone{
-    width: 570px;
-    height: 519px;
-    position: absolute;
+#background{
+    width: 679px;
+    height: 527px;
+    display: flex;
+    position: relative;
+    right: 75px;
 }
 
 #regLogDiv {
@@ -75,6 +115,8 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 399px;
+    height: 47px;
     gap: 24px;
 }
 
@@ -83,10 +125,76 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 16px;
 }
+
+
 #regForm {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 16px;
+}
+
+#mainBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#headerBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: #FFFFFF;
+
+    height: 88px;
+    width: 100vw;
+}
+
+#headerPhoto{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 145px;
+    height: 18px;
+    
+}
+
+.inputDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 6px;
+}
+
+.inputLabel{
+    font-size: 16px;
+    font-family: 'GT Walsheim Regular';
+}
+
+.input {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid #CDCED2;
+    width: 399px;
+    height: 42px;
+    padding-right: 16px;
+    padding-left: 16px;
+
+    font-size: 16px;
+    font-family: 'GT Walsheim Regular';
 }

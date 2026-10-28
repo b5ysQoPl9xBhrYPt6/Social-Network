@@ -2,17 +2,22 @@
 {% load static %}
 
 {% block content %}
-    <div id="authBox">
-        <div id = 'regLogDiv'>
-            <h1 id="regTitle" class="selected">Реєстрація</h1>
-            <h1 id="logTitle">Авторизація</h1>
+    <header id="headerBox">
+        <img id = 'headerPhoto' src="{% static 'user_app/img/header.png' %}" alt="Photo not loaded">
+    </header>
+
+    <div id = "mainBlock">
+        <div id="authBox">
+            <div id = 'regLogDiv'>
+                <h1 id="regTitle">Реєстрація</h1>
+                <h1 id="logTitle">Авторизація</h1>
+            </div>
+            <h3 id = 'welcomeText'>Приєднуйся до World IT</h3>
+            {% include "user_app/forms/regform.html" %}
+            {% include "user_app/forms/logform.html" %}
         </div>
-        <h3 id = 'welcomeText'>Приєднуйся до World IT</h3>
-        {% include "user_app/forms/regform.html" %}
-        {% include "user_app/forms/logform.html" %}
+        <img src="{% static 'user_app/img/background.png' %}" alt="Computer" id = 'background'>
     </div>
-    <img src="{% static 'user_app/img/laptop.png' %}" alt="Computer" id = 'computer'>
-    <img src="{% static 'user_app/img/iphone.png' %}" alt="IPhone">
 {% endblock %}
 
 {% block links %}

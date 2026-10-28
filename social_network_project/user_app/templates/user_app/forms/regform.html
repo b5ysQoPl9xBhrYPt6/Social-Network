@@ -1,11 +1,20 @@
+{% load static %}
+
 <!-- СОДЕРЖИМОЕ ФОРМ ВРЕМЕННОЕ -->
 <form method="post" id="regForm">
     {% csrf_token %}
-    
-    
-    <input type="email" placeholder="you@example.com" name = "mailInput"required>
-    <input type="password" placeholder="Введи пароль" name = "passwordInput" required>
-    <input type="password" placeholder="Повтори пароль"  name = "confirmPasswordInput"required>
-    
+    <div class = "inputDiv">
+        <label for="mailInput" class = 'inputLabel'>Електронна пошта</label>
+        <input type="email" placeholder="you@example.com" name = "mailInput"required class = "input">
+    </div>
+    <div class = "inputDiv">
+        <label for="passwordInput" class = 'inputLabel'>Пароль</label>
+        <input type="password" placeholder="Введи пароль" name = "passwordInput" required class = "input">
+    </div>
+    <div class = "inputDiv">
+        <label for="confirmPasswordInput" class = 'inputLabel'>Підтверди пароль</label>
+        <input type="password" placeholder="Повтори пароль"  name = "confirmPasswordInput" required class = "input">
+    </div>
+        
     <button name = "regButton" class="continue-button"><p class="continue-text">Створити акаунт</p></button>
 </form>

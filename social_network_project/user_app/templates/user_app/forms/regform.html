@@ -3,17 +3,26 @@
 <!-- СОДЕРЖИМОЕ ФОРМ ВРЕМЕННОЕ -->
 <form method="post" id="regForm">
     {% csrf_token %}
-    <div class = "inputDiv">
-        <label for="mailInput" class = 'inputLabel'>Електронна пошта</label>
+    <div class = "input-div">
+        <label for="mailInput" class = 'input-label'>Електронна пошта</label>
         <input type="email" placeholder="you@example.com" name = "mailInput"required class = "input">
     </div>
-    <div class = "inputDiv">
-        <label for="passwordInput" class = 'inputLabel'>Пароль</label>
-        <input type="password" placeholder="Введи пароль" name = "passwordInput" required class = "input">
+    <div class = "input-div">
+        <label for="passwordInput" class = 'input-label'>Пароль</label>
+        
+        <div class="input-wrapper">
+            <input type="password" placeholder="Введи пароль" name = "passwordInput" required class = "input" id = "passwordInputText">
+            <img src="{% static 'user_app/img/show.png' %}" alt="Show" class="eye-icon" id="showPasswordText">
+        </div>
+        
     </div>
-    <div class = "inputDiv">
-        <label for="confirmPasswordInput" class = 'inputLabel'>Підтверди пароль</label>
-        <input type="password" placeholder="Повтори пароль"  name = "confirmPasswordInput" required class = "input">
+    <div class = "input-div">
+        <label for="confirmPasswordInput" class = 'input-label'>Підтверди пароль</label>
+
+        <div class="input-wrapper">
+            <input type="password" placeholder="Повтори пароль"  name = "confirmPasswordInput" required class = "input" id = "confirmPasswordInputText">
+            <img src="{% static 'user_app/img/show.png' %}" alt="Show" class="eye-icon" id="showConfirmPasswordText">
+        </div>
     </div>
         
     <button name = "regButton" class="continue-button"><p class="continue-text">Створити акаунт</p></button>

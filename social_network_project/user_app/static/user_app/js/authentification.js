@@ -1,16 +1,22 @@
-const authDivElement         = document.querySelector("#regLogDiv")
+const authDivElement                      = document.querySelector("#regLogDiv")
+            
+const regElement                          = document.querySelector("#regTitle")
+const logElement                          = document.querySelector("#logTitle")
+            
+const mailInputElement                    = document.querySelector("#mailInput")
+const passwordElement                     = document.querySelector("#passwordInputText")
+const confirmPasswordElement              = document.querySelector("#confirmPasswordInputText")
+const authPasswordElement                 = document.querySelector("#authPasswordInputText")
 
-const regElement             = document.querySelector("#regTitle")
-const logElement             = document.querySelector("#logTitle")
-
-const mailInputElement       = document.querySelector("#mailInput")
-const passwordElement        = document.querySelector("#passwordInput")
-const confirmPasswordElement = document.querySelector("#confirmPasswordInput")
-
-const regFormElement         = document.querySelector("#regForm")
-const logFormElement         = document.querySelector("#logForm")
-
-const welcomeTextElement     = document.querySelector("#welcomeText")
+            
+const regFormElement                      = document.querySelector("#regForm")
+const logFormElement                      = document.querySelector("#logForm")
+            
+const welcomeTextElement                  = document.querySelector("#welcomeText")
+       
+const showPasswordTextElement             = document.querySelector("#showPasswordText")
+const showConfirmPasswordTextElement      = document.querySelector("#showConfirmPasswordText")
+const showAuthPasswordTextElement         = document.querySelector("#showAuthPasswordText")
 
 
 function goto(page) {
@@ -37,15 +43,37 @@ function goto(page) {
     }
 }
 
+/**
+ * @param {Element} inputElement
+ */
+function changeVisibility(inputElement) {
+    inputElement.toggleAttribute("value")
+    if (inputElement.hasAttribute("value")) {
+        inputElement.setAttribute("type", "text")
+    } else {
+        inputElement.setAttribute("type", "password")
+    }
+}
+
 
 regElement.addEventListener("click", () => {
     goto("reg")
-    console.log("REG")
 })
 
 logElement.addEventListener("click", () => {
     goto("log")
-    console.log("LOG")
+})
+
+showPasswordTextElement.addEventListener("click", () => {
+    changeVisibility(passwordElement)
+})
+
+showAuthPasswordTextElement.addEventListener("click", () => {
+    changeVisibility(authPasswordElement)
+})
+
+showConfirmPasswordTextElement.addEventListener("click", () => {
+    changeVisibility(confirmPasswordElement)
 })
 
 goto("reg")

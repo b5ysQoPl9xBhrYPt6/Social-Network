@@ -1,22 +1,74 @@
 const authDivElement                      = document.querySelector("#regLogDiv")
-            
+
 const regElement                          = document.querySelector("#regTitle")
 const logElement                          = document.querySelector("#logTitle")
-            
+
 const mailInputElement                    = document.querySelector("#mailInput")
 const passwordElement                     = document.querySelector("#passwordInputText")
 const confirmPasswordElement              = document.querySelector("#confirmPasswordInputText")
 const authPasswordElement                 = document.querySelector("#authPasswordInputText")
 
-            
 const regFormElement                      = document.querySelector("#regForm")
 const logFormElement                      = document.querySelector("#logForm")
-            
+const verifyFormElement                   = document.querySelector("#confirmForm")
+
+const verifyFormBlockElement              = document.querySelector("#verifyCodeBlock")
+
 const welcomeTextElement                  = document.querySelector("#welcomeText")
-       
+
 const showPasswordTextElement             = document.querySelector("#showPasswordText")
 const showConfirmPasswordTextElement      = document.querySelector("#showConfirmPasswordText")
 const showAuthPasswordTextElement         = document.querySelector("#showAuthPasswordText")
+
+
+let isSending = false
+function sendFormAction(form, execute) {
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault()
+        if (isSending == false) {
+            isSending = true
+            const response = await fetch(form.action, {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": form.querySelector("input[name='csrfmiddlewaretoken']").value
+                },
+                body: new FormData(form)
+            })
+            const data = await response.json()
+            execute(data)
+            isSending = false
+        }
+    })
+}
+
+sendFormAction(regFormElement, (data) => {
+    if (data.success) {
+        console.log(data)
+        verifyFormBlockElement.removeAttribute("style")
+    } else {
+        console.log(data.errors)
+        alert("Произошла ошибка")
+    }
+})
+
+sendFormAction(verifyFormElement, (data) => {
+    if (data.success) {
+        verifyFormElement.setAttribute("style", "display: none;")
+        goto("log")
+    } else {
+        console.log(data.errors)
+        alert("Произошла ошибка")
+    }
+})
+
+sendFormAction(logFormElement, (data) => {
+    if (data.success) {
+        console.log(data)
+    } else {
+        console.log(data.errors)
+        alert("Произошла ошибка")
+    }
+})
 
 
 function goto(page) {
@@ -64,16 +116,16 @@ logElement.addEventListener("click", () => {
     goto("log")
 })
 
-showPasswordTextElement.addEventListener("click", () => {
-    changeVisibility(passwordElement)
-})
+// showPasswordTextElement.addEventListener("click", () => {
+//     changeVisibility(passwordElement)
+// })
 
-showAuthPasswordTextElement.addEventListener("click", () => {
-    changeVisibility(authPasswordElement)
-})
+// showAuthPasswordTextElement.addEventListener("click", () => {
+//     changeVisibility(authPasswordElement)
+// })
 
-showConfirmPasswordTextElement.addEventListener("click", () => {
-    changeVisibility(confirmPasswordElement)
-})
+// showConfirmPasswordTextElement.addEventListener("click", () => {
+//     changeVisibility(confirmPasswordElement)
+// })
 
 goto("reg")

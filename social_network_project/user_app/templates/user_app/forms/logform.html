@@ -1,9 +1,9 @@
 {% load static %}
 
 <!-- СОДЕРЖИМОЕ ФОРМ ВРЕМЕННОЕ -->
-<form method="post" id="logForm" style="display: none;">
+<form method="post" id="logForm" style="display: none;" action="{% url 'send_login' %}">
     {% csrf_token %}
-    <div class = "input-div">
+    <!-- <div class = "input-div">
         <label for="mailInput" class = 'input-label'>Електронна пошта</label>
         <input type="email" placeholder="you@example.com" name = "mailInput" required class = "input">
     </div>
@@ -16,5 +16,8 @@
         </div>
     </div>
     
+    <button name = "logButton" class="continue-button"><p class="continue-text">Увійти</p></button> -->
+
+    {{ logform.as_p }}
     <button name = "logButton" class="continue-button"><p class="continue-text">Увійти</p></button>
 </form>

@@ -1,9 +1,12 @@
 {% load static %}
 
 <!-- СОДЕРЖИМОЕ ФОРМ ВРЕМЕННОЕ -->
-<form method="post" id="regForm">
+<form method="post" id="regForm" action="{% url 'send_reg' %}">
     {% csrf_token %}
-    <div class = "input-div">
+
+    {{ regform.as_p }}
+
+    <!-- <div class = "input-div">
         <label for="mailInput" class = 'input-label'>Електронна пошта</label>
         <input type="email" placeholder="you@example.com" name = "mailInput"required class = "input">
     </div>
@@ -23,7 +26,7 @@
             <input type="password" placeholder="Повтори пароль"  name = "confirmPasswordInput" required class = "input" id = "confirmPasswordInputText">
             <img src="{% static 'user_app/img/show.png' %}" alt="Show" class="eye-icon" id="showConfirmPasswordText">
         </div>
-    </div>
+    </div> -->
         
     <button name = "regButton" class="continue-button"><p class="continue-text">Створити акаунт</p></button>
 </form>

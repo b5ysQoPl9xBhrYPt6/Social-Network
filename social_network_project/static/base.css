@@ -119,7 +119,7 @@ body {
     user-select: none;
 
     position: absolute;
-    right: 12px;
+    right: 15px;
     top: 50%;
     transform: translateY(-50%);
 }

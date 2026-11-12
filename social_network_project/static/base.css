@@ -126,3 +126,20 @@ body {
 .eye-icon:hover {
     cursor: pointer;
 }
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 34px;
+    font-family: 'GT Walsheim Regular';
+    text-align: center;
+}
+
+.smallButton {
+    font-size: 16px;
+    font-family: 'GT Walsheim Regular';
+    text-align: center;
+    color: #543C52;
+    text-decoration: none;
+}

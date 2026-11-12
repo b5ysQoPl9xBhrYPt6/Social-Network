@@ -20,6 +20,19 @@ const showPasswordTextElement             = document.querySelector("#showPasswor
 const showConfirmPasswordTextElement      = document.querySelector("#showConfirmPasswordText")
 const showAuthPasswordTextElement         = document.querySelector("#showAuthPasswordText")
 
+const code1 = document.querySelector("#code_1")
+const code2 = document.querySelector("#code_2")
+const code3 = document.querySelector("#code_3")
+const code4 = document.querySelector("#code_4")
+const code5 = document.querySelector("#code_5")
+const code6 = document.querySelector("#code_6")
+
+const regErrorMessagesElement             = document.querySelector("#regErrorMessages")
+const logErrorMessagesElement             = document.querySelector("#logErrorMessages")
+const verifyErrorMessagesElement          = document.querySelector("#verifyErrorMessages")
+
+
+// ============= FORMS FETCH REQUESTS =============
 
 let isSending = false
 function sendFormAction(form, execute) {
@@ -47,7 +60,15 @@ sendFormAction(regFormElement, (data) => {
         verifyFormBlockElement.removeAttribute("style")
     } else {
         console.log(data.errors)
-        alert("Произошла ошибка")
+        
+        for (const keyName in data.errors) {
+            for (const error of data.errors[keyName]) {
+                const listElement = document.createElement("li")
+                listElement.textContent = error
+                regErrorMessagesElement.appendChild(listElement)
+            }
+        }
+        regErrorMessagesElement.removeAttribute("style")
     }
 })
 
@@ -57,7 +78,15 @@ sendFormAction(verifyFormElement, (data) => {
         goto("log")
     } else {
         console.log(data.errors)
-        alert("Произошла ошибка")
+        
+        for (const keyName in data.errors) {
+            for (const error of data.errors[keyName]) {
+                const listElement = document.createElement("li")
+                listElement.textContent = error
+                verifyErrorMessagesElement.appendChild(listElement)
+            }
+        }
+        verifyErrorMessagesElement.removeAttribute("style")
     }
 })
 
@@ -66,10 +95,21 @@ sendFormAction(logFormElement, (data) => {
         console.log(data)
     } else {
         console.log(data.errors)
-        alert("Произошла ошибка")
+        
+        
+        for (const keyName in data.errors) {
+            for (const error of data.errors[keyName]) {
+                const listElement = document.createElement("li")
+                listElement.textContent = error
+                logErrorMessagesElement.appendChild(listElement)
+            }
+        }
+        logErrorMessagesElement.removeAttribute("style")
     }
 })
 
+
+// ============= REG / LOG NAVIGATION =============
 
 function goto(page) {
     if (page == "reg") {
@@ -95,6 +135,19 @@ function goto(page) {
     }
 }
 
+regElement.addEventListener("click", () => {
+    goto("reg")
+})
+
+logElement.addEventListener("click", () => {
+    goto("log")
+})
+
+goto("reg")
+
+
+// ========== PASSWORD FIELDS VISIBILITY ==========
+
 /**
  * @param {Element} inputElement
  */
@@ -107,25 +160,47 @@ function changeVisibility(inputElement) {
     }
 }
 
-
-regElement.addEventListener("click", () => {
-    goto("reg")
+showPasswordTextElement.addEventListener("click", () => {
+    changeVisibility(passwordElement)
 })
 
-logElement.addEventListener("click", () => {
-    goto("log")
+showAuthPasswordTextElement.addEventListener("click", () => {
+    changeVisibility(authPasswordElement)
 })
 
-// showPasswordTextElement.addEventListener("click", () => {
-//     changeVisibility(passwordElement)
-// })
+showConfirmPasswordTextElement.addEventListener("click", () => {
+    changeVisibility(confirmPasswordElement)
+})
 
-// showAuthPasswordTextElement.addEventListener("click", () => {
-//     changeVisibility(authPasswordElement)
-// })
 
-// showConfirmPasswordTextElement.addEventListener("click", () => {
-//     changeVisibility(confirmPasswordElement)
-// })
+// ========= VERIFY FORM AUTO FIELD SELECT =========
 
-goto("reg")
+code1.addEventListener("input", (event) => {
+    if (event.data) {
+        code2.focus()
+    }
+})
+
+code2.addEventListener("input", (event) => {
+    if (event.data) {
+        code3.focus()
+    }
+})
+
+code3.addEventListener("input", (event) => {
+    if (event.data) {
+        code4.focus()
+    }
+})
+
+code4.addEventListener("input", (event) => {
+    if (event.data) {
+        code5.focus()
+    }
+})
+
+code5.addEventListener("input", (event) => {
+    if (event.data) {
+        code6.focus()
+    }
+})

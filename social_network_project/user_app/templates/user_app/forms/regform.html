@@ -1,20 +1,17 @@
 {% load static %}
 
-<!-- СОДЕРЖИМОЕ ФОРМ ВРЕМЕННОЕ -->
 <form method="post" id="regForm" action="{% url 'send_reg' %}">
     {% csrf_token %}
 
-    {{ regform.as_p }}
-
-    <!-- <div class = "input-div">
+    <div class = "input-div">
         <label for="mailInput" class = 'input-label'>Електронна пошта</label>
-        <input type="email" placeholder="you@example.com" name = "mailInput"required class = "input">
+        <input type="email" placeholder="you@example.com" name = "email" required class = "input">
     </div>
     <div class = "input-div">
         <label for="passwordInput" class = 'input-label'>Пароль</label>
         
         <div class="input-wrapper">
-            <input type="password" placeholder="Введи пароль" name = "passwordInput" required class = "input" id = "passwordInputText">
+            <input type="password" placeholder="Введи пароль" name = "password1" required class = "input" id = "passwordInputText">
             <img src="{% static 'user_app/img/show.png' %}" alt="Show" class="eye-icon" id="showPasswordText">
         </div>
         
@@ -23,10 +20,12 @@
         <label for="confirmPasswordInput" class = 'input-label'>Підтверди пароль</label>
 
         <div class="input-wrapper">
-            <input type="password" placeholder="Повтори пароль"  name = "confirmPasswordInput" required class = "input" id = "confirmPasswordInputText">
+            <input type="password" placeholder="Повтори пароль"  name = "password2" required class = "input" id = "confirmPasswordInputText">
             <img src="{% static 'user_app/img/show.png' %}" alt="Show" class="eye-icon" id="showConfirmPasswordText">
         </div>
-    </div> -->
-        
+    </div>
+    
+    <ul id="regErrorMessages" style="display: none;" class="error-messages"></ul>
+
     <button name = "regButton" class="continue-button"><p class="continue-text">Створити акаунт</p></button>
 </form>

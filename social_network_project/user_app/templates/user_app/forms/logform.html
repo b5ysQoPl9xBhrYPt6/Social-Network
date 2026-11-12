@@ -1,23 +1,21 @@
 {% load static %}
 
-<!-- СОДЕРЖИМОЕ ФОРМ ВРЕМЕННОЕ -->
 <form method="post" id="logForm" style="display: none;" action="{% url 'send_login' %}">
     {% csrf_token %}
-    <!-- <div class = "input-div">
+    <div class = "input-div">
         <label for="mailInput" class = 'input-label'>Електронна пошта</label>
-        <input type="email" placeholder="you@example.com" name = "mailInput" required class = "input">
+        <input type="email" placeholder="you@example.com" name = "username" required class = "input">
     </div>
     
     <div class = "input-div">
         <label for="passwordInput" class = 'input-label'>Пароль</label>
         <div class="input-wrapper">
-            <input type="password" placeholder="Введи пароль" name = "passwordInput" required class = "input" id = "authPasswordInputText">
+            <input type="password" placeholder="Введи пароль" name = "password" required class = "input" id = "authPasswordInputText">
             <img src="{% static 'user_app/img/show.png' %}" alt="Show" class="eye-icon" id="showAuthPasswordText">
         </div>
     </div>
-    
-    <button name = "logButton" class="continue-button"><p class="continue-text">Увійти</p></button> -->
 
-    {{ logform.as_p }}
+    <ul id="logErrorMessages" style="display: none;" class="error-messages"></ul>
+
     <button name = "logButton" class="continue-button"><p class="continue-text">Увійти</p></button>
 </form>

@@ -1,0 +1,31 @@
+{% load static %}
+
+<form method="post" id="confirmForm" action="{% url 'send_verify_code' %}">
+    {% csrf_token %}
+    <h1 class = "title">Підтвердження пошти</h1>
+    <h4 id = 'enterUrPasswordText'>Ми надіслали 6-значний код на вашу пошту {{ email }}. Введіть його нижче, щоб підтвердити акаунт</h4>
+    <div id = "codeAuth">
+        <label class = 'input-label'>Код підтвердження</label>
+        <div id = 'codeBox'>
+            <div class ="codeDiv">
+                <input type="text" maxlength="1" class="numInput" name="code_1" id="code_1">
+                <input type="text" maxlength="1" class="numInput" name="code_2" id="code_2">
+            </div>
+            <div class="codeDiv">
+                <input type="text" maxlength="1" class="numInput" name="code_3" id="code_3">
+                <input type="text" maxlength="1" class="numInput" name="code_4" id="code_4">
+            </div>
+            <div class="codeDiv">
+                <input type="text" maxlength="1" class="numInput" name="code_5" id="code_5">
+                <input type="text" maxlength="1" class="numInput" name="code_6" id="code_6">
+            </div>
+        </div>
+    </div>
+
+    <ul id="verifyErrorMessages" style="display: none;" class="error-messages"></ul>
+
+    <div id = 'backAcceptDiv'>
+        <button name = "verifyButton" class="continue-button"><p class="continue-text">Підтвердити</p></button>
+        <a href="" class = 'smallButton'>Назад</a>
+    </div>
+</form>

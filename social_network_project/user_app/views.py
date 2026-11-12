@@ -16,9 +16,13 @@ class AuthView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
         context["regform"] = RegistrationForm()
         context["verifyform"] = VerifyCodeForm()
         context["logform"] = LoginForm()
+
+        context["email"] = self.request.session.get("email")
+
         return context
     
 
@@ -53,8 +57,14 @@ class VerifyCodeView(FormView):
     form_class = VerifyCodeForm
 
     def form_valid(self, form: VerifyCodeForm):
-        print("OK")
-        code = form.cleaned_data.get("code")
+        code = ''
+        for field_name in form.fields:
+            data = form.cleaned_data.get(field_name)
+            if not data:
+                return JsonResponse({"success": False, "errors": ["Некоторые поля не содержат данных"]})
+            code += data
+        print(code)
+        
         verify_code = VerifyCode.objects.filter(code = code).first()
 
         if verify_code and verify_code.is_valid():
@@ -64,11 +74,10 @@ class VerifyCodeView(FormView):
             verify_code.delete()
             return JsonResponse({"success": True})
         else:
-            form.add_error("code", "Такого коду не існує, або його час вичерпано")
+            form.add_error(None, "Такого коду не існує, або його час вичерпано")
             return self.form_invalid(form)
 
     def form_invalid(self, form):
-        print("NOT OK BUT OKOK")
         return JsonResponse({"success": False, "errors": form.errors})
 
 class CustomLoginView(LoginView):

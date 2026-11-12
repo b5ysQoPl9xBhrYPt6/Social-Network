@@ -21,16 +21,15 @@
         <img src="{% static 'user_app/img/background.png' %}" alt="Computer" id = 'background'>
     </div>
 
-    <div id="verifyCodeBlock" style="display: none;">
-        {% include "user_app/forms/confirmform.html" %}
+    <div id="verifyCodeBlock">
+        {% include "user_app/forms/verifyform.html" %}
     </div>
 {% endblock %}
 
 {% block links %}
-    <link rel="stylesheet" href="{% static 'user_app/css/authentification.css' %}">
+    <link rel="stylesheet" href="{% static 'user_app/css/auth.css' %}">
 {% endblock %}
 
 {% block scripts %}
-    <script src="{% static 'user_app/js/auth-ux.js' %}"></script>
-    <!-- <script src="{% static 'user_app/js/auth-backend.js' %}"></script> -->
+    <script src="{% static 'user_app/js/auth.js' %}"></script>
 {% endblock %}
